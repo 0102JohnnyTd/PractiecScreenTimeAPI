@@ -28,21 +28,3 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-
-//struct ContentView: View {
-//
-//    @StateObject var viewModel: ContentViewModel
-//    @State private var isPresented = false
-//
-//    var body: some View {
-//        Button {
-//            isPresented = true
-//        } label: {
-//            Text("選択する")
-//        }
-//        .familyActivityPicker(
-//            isPresented: $isPresented,
-//            selection: $viewModel.selection
-//        )
-//    }
-//}
