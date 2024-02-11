@@ -12,6 +12,8 @@
 		1CABA6C02B6F7F870070F1BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CABA6BF2B6F7F870070F1BB /* Assets.xcassets */; };
 		1CABA6C32B6F7F870070F1BB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CABA6C22B6F7F870070F1BB /* Preview Assets.xcassets */; };
 		1CABA6CB2B6F8FC20070F1BB /* ManagedSettingsStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CABA6CA2B6F8FC20070F1BB /* ManagedSettingsStoreModel.swift */; };
+		1CABA6CD2B6F99B60070F1BB /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CABA6CC2B6F99B60070F1BB /* ContentViewModel.swift */; };
+		1CC1CE792B753ABF00E47CF8 /* ScreenTimeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC1CE782B753ABF00E47CF8 /* ScreenTimeAPIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		1CABA6C22B6F7F870070F1BB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1CABA6C92B6F803C0070F1BB /* PracticeScreenTimeAPI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PracticeScreenTimeAPI.entitlements; sourceTree = "<group>"; };
 		1CABA6CA2B6F8FC20070F1BB /* ManagedSettingsStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSettingsStoreModel.swift; sourceTree = "<group>"; };
+		1CABA6CC2B6F99B60070F1BB /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		1CC1CE782B753ABF00E47CF8 /* ScreenTimeAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +60,9 @@
 			children = (
 				1CABA6C92B6F803C0070F1BB /* PracticeScreenTimeAPI.entitlements */,
 				1CABA6BB2B6F7F850070F1BB /* PracticeScreenTimeAPIApp.swift */,
+				1CABA6CC2B6F99B60070F1BB /* ContentViewModel.swift */,
 				1CABA6BD2B6F7F850070F1BB /* ContentView.swift */,
+				1CC1CE782B753ABF00E47CF8 /* ScreenTimeAPIClient.swift */,
 				1CABA6CA2B6F8FC20070F1BB /* ManagedSettingsStoreModel.swift */,
 				1CABA6BF2B6F7F870070F1BB /* Assets.xcassets */,
 				1CABA6C12B6F7F870070F1BB /* Preview Content */,
@@ -142,6 +148,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CABA6CD2B6F99B60070F1BB /* ContentViewModel.swift in Sources */,
+				1CC1CE792B753ABF00E47CF8 /* ScreenTimeAPIClient.swift in Sources */,
 				1CABA6BE2B6F7F850070F1BB /* ContentView.swift in Sources */,
 				1CABA6CB2B6F8FC20070F1BB /* ManagedSettingsStoreModel.swift in Sources */,
 				1CABA6BC2B6F7F850070F1BB /* PracticeScreenTimeAPIApp.swift in Sources */,
