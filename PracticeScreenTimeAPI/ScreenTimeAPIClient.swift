@@ -41,17 +41,6 @@ final class ScreenTimeAPIClient: ObservableObject {
         }
     }
 
-    func revokeAuthorize() {
-        AuthorizationCenter.shared.revokeAuthorization { result in
-            switch result {
-            case .success:
-                print("リクエスト承認を取り下げました")
-            case .failure:
-                print("リクエスト承認の取り下げに失敗しました")
-            }
-        }
-    }
-
     /// 他のアプリに影響を及ぼすことに対するリクエストをユーザーに送る
     func authorize() async throws {
         try await AuthorizationCenter.shared.requestAuthorization(for: .individual)

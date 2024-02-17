@@ -28,13 +28,6 @@ struct ContentView: View {
             isPresented: $isPresented,
             selection: $model.selectionToDiscourage
         )
-
-        Button {
-            model.revokeAuthorize()
-        } label: {
-            Text("封印する曜日/時間帯を選ぶ")
-        }
-        .padding()
     }
 }
 
