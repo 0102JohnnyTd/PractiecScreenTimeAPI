@@ -11,7 +11,7 @@ import FamilyControls
 final class ContentViewModel: ObservableObject {
     @Published var model: ScreenTimeAPIClient
 
-    init(model: ScreenTimeAPIClient = ScreenTimeAPIClient()) {
+    init(model: ScreenTimeAPIClient) {
         self.model = model
     }
 

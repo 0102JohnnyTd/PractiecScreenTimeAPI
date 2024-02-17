@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FamilyControls
+import ManagedSettings
 
 @main
 struct PracticeScreenTimeAPIApp: App {
@@ -16,7 +17,7 @@ struct PracticeScreenTimeAPIApp: App {
                 .onAppear {
                     Task {
                         do {
-                            try await AuthorizationCenter.shared.requestAuthorization(for: .individual)
+                            try await ScreenTimeAPIClient.shared.authorize()
                         } catch {
                             print("FamilyControls承認エラーが発生:", error)
                         }

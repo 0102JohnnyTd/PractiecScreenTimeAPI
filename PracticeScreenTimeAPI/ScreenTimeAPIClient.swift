@@ -11,52 +11,65 @@ import ManagedSettings
 import DeviceActivity
 
 
-class ScreenTimeAPIClient: ObservableObject {
-//    static let shared = ScreenTimeAPIClient()
+final class ScreenTimeAPIClient: ObservableObject {
+    private init() {}
+    static let shared = ScreenTimeAPIClient()
+
     private let store = ManagedSettingsStore()
     private let center = DeviceActivityCenter()
-
-//    private init() {}
 
     /// ブロックするアプリを設定
     var selectionToDiscourage = FamilyActivitySelection() {
         // プロパティの変更前に実行
         willSet {
+            print("newValue.categoryTokens", newValue.categoryTokens)
             print ("got here \(newValue)")
 
             // アプリとアプリカテゴリ(ex: SNS,Game..)のトークンを取得し、ManagedSettingsStoreに渡す
             store.shield.applications = newValue.applicationTokens.isEmpty ? nil : newValue.applicationTokens
             store.shield.applicationCategories = ShieldSettings
                 .ActivityCategoryPolicy
-                .specific(
-                    newValue.categoryTokens
+                .all(except:
+                        newValue.applicationTokens
                 )
+
             store.shield.webDomainCategories = ShieldSettings
                 .ActivityCategoryPolicy
-                .specific(
-                    newValue.categoryTokens
+                .all(except:
+                        newValue.webDomainTokens
                 )
+        }
+    }
+
+    func revokeAuthorize() {
+        AuthorizationCenter.shared.revokeAuthorization { result in
+            switch result {
+            case .success:
+                print("リクエスト承認を取り下げました")
+            case .failure:
+                print("リクエスト承認の取り下げに失敗しました")
+            }
         }
     }
 
     /// 他のアプリに影響を及ぼすことに対するリクエストをユーザーに送る
     func authorize() async throws {
         try await AuthorizationCenter.shared.requestAuthorization(for: .individual)
+        initiateMonitoring()
     }
 
-    func initiateMonitoring() {
-        let schedule = DeviceActivitySchedule(
-            intervalStart: DateComponents(hour: 0, minute: 0),
-            intervalEnd: DateComponents(hour: 23, minute: 59),
-            repeats: true,
-            warningTime: nil
-        )
-
+    private func initiateMonitoring() {
         do {
+            let schedule = DeviceActivitySchedule(
+                intervalStart: DateComponents(hour: 10, minute: 22),
+                intervalEnd: DateComponents(hour: 10, minute: 37),
+                repeats: true
+            )
             try center.startMonitoring(.daily, during: schedule)
         } catch {
             print ("Could not start monitoring \(error)")
         }
+        store.application.denyAppRemoval = true
         store.dateAndTime.requireAutomaticDateAndTime = true
         store.account.lockAccounts = true
         store.passcode.lockPasscode = true
